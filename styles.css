@@ -1,0 +1,163 @@
+/* Главная страница */
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    font-family: 'Inter', sans-serif;
+    background-color: #ffffff;
+    overflow: hidden;
+}
+
+.menu {
+    display: flex;
+    align-items: center;
+    background-color: #043873;
+    padding: 20px;
+    position: relative;
+    z-index: 1;
+}
+
+.logo {
+    width: 50px; /* Укажите нужный размер для логотипа */
+    height: 50px; /* Укажите нужный размер для логотипа */
+    margin-right: 10px;
+}
+
+.menu-title {
+    color: white;
+    font-weight: bold;
+    font-size: 24px;
+    margin-right: auto;
+}
+
+.menu-items {
+    display: flex;
+}
+
+.menu-items a {
+    color: white;
+    font-weight: bold;
+    font-size: 24px;
+    margin-left: 20px;
+    text-decoration: none;
+}
+
+.content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #3568A6;
+    padding: 20px;
+    height: calc(100vh - 80px);
+    position: relative;
+    text-align: center;
+}
+
+
+.interactive-map{
+    width: 100%;
+    height: 400px;
+}
+
+.image-block {
+    position: relative;
+    margin-top: 20px;
+    width: 100%;
+}
+
+.building-plan{
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+.marker {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: #043873;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.panorama-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.panorama-viewer {
+    width: 80%; 
+    height: 80%;
+}
+
+.close-button {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    background-color: #3568A6; /* Цвет кнопки закрытия */
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.close-button:hover {
+    background-color: #043873;
+}
+
+.header-image {
+    width: 100%;
+    height: auto;
+}
+
+.text-block {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    text-align: center;
+    z-index: 1;
+}
+
+.text-block h1 {
+    font-weight: bold;
+    font-size: 58px;
+    margin: 0;
+}
+
+.text-block p {
+    font-weight: 500; /* Medium */
+    font-size: 24px;
+    margin-top: 10px;
+}
+
+.view-button {
+    background-color: #4F9CF9;
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    border: none;
+    border-radius: 20px; /* Круглые углы */
+    padding: 10px 20px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.image-block {
+    flex: 1;
+}
+
+.interactive-map {
+    width: 100%;
+    height: auto; /* Подгоняет высоту под ширину */
+}
