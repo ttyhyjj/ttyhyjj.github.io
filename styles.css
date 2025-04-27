@@ -65,6 +65,23 @@ body {
     width: 100%;
 }
 
+@media (max-width: 600px) {
+    body {
+        font-size: 14px; /* Уменьшение размера шрифта для мобильных */
+    }
+    .menu {
+        flex-direction: column; /* Вертикальное расположение элементов меню */
+    }
+    .content {
+        padding: 10px; /* Увеличение отступов для удобства чтения */
+    }
+}
+
+img {
+    max-width: 100%; /* Изображение не будет шире контейнера */
+    height: auto; /* Высота будет автоматически подстраиваться */
+}
+
 .building-plan{
     max-width: 100%;
     height: auto;
