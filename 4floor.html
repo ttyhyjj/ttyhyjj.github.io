@@ -22,18 +22,19 @@
             align-items: center;
             padding: 10px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            flex-wrap: wrap; /* Позволяет элементам переноситься на новую строку */
         }
         .logo {
-            height: 50px;
-            margin-right: 20px;
+            height: 40px; /* Уменьшение размера логотипа для мобильных */
+            margin-right: 10px; /* Уменьшение отступа */
         }
         .menu-title {
-            font-size: 24px;
+            font-size: 20px; /* Уменьшение размера шрифта для мобильных */
             font-weight: 700;
             margin-right: auto;
         }
         .menu-items a {
-            margin: 0 15px;
+            margin: 0 10px; /* Уменьшение отступов между ссылками */
             text-decoration: none;
             color: #fff;
         }
@@ -45,60 +46,105 @@
         }
         .floor-plan {
             position: relative;
-            width: 900px; /* Ширина вашего плана */
-            height: 800px; /* Высота вашего плана */
-            background-image: url('4\ этаж\(бел\).png'); /* Путь к вашему изображению плана */
-            background-size: cover;
-            margin-bottom: 0px; /* Отступ снизу для модального окна */
+            width: 100%; /* Занимает всю ширину экрана */
+            max-width: 900px; /* Максимальная ширина плана */
+            height: auto; /* Высота будет автоматически подстраиваться */
+            background-image: url('4 этаж(бел).png'); /* Путь к вашему изображению плана */
+            background-size: contain; /* Изображение будет масштабироваться с сохранением пропорций */
+            background-repeat: no-repeat; /* Изображение не будет повторяться */
         }
         .point {
             position: absolute;
-            width: 20px; /* Ширина точки */
-            height: 20px; /* Высота точки */
-            background-color: #043873; /* Цвет точки */
-            border-radius: 50%; /* Круглая форма */
+            width: 20px; 
+            height: 20px; 
+            background-color: #043873; 
+            border-radius: 50%; 
             cursor: pointer;
         }
-        /* Пример расположения точек */
-        .point1 { top: 100px; right: 80px; }
-        .point2 { top: 350px; right: 63px; }
-        .point3 { top: 700px; right: 80px; }
-        .point4 { top: 715px; right: 430px; }
-        .point5 { top: 700px; left: 70px; }
-        .point6 { top: 415px; left: 56px; }
-        .point7 { top: 150px; left: 60px; }
+        
+        /* Пример расположения точек (может потребоваться корректировка) */
+        .point1 { top: 10%; right: 10%; }
+        .point2 { top: 40%; right: 7%; }
+        .point3 { top: 80%; right: 10%; }
+        .point4 { top: 85%; right: 50%; }
+        .point5 { top: 80%; left: 10%; }
+        .point6 { top: 50%; left: 7%; }
+        .point7 { top: 20%; left: 8%; }
+
         /* Стили для модального окна */
         .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.8);
-            justify-content: center;
-            align-items: center;
-        }
-        .modal-content {
-            position: relative;
-            max-width: 100%;
-            max-height: 100%;
-        }
-        .modal img {
-            max-width: 100%;
-            max-height: 100%;
-        }
-        .close-button {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            padding: 10px;
-            background-color: #fff;
-            border: none;
-            cursor: pointer;
-        }
+            display:none;
+            position:fixed;
+            top :0 ;
+           left :0 ;
+           width :100%;
+           height :100%;
+           background-color :rgba(0,0,0,0.8);
+           justify-content:center ;
+           align-items:center ;
+       }
+
+       .modal-content {
+           position :relative ;
+           max-width :90%;
+           max-height :90%;
+       }
+
+       .modal img {
+           max-width :100%;
+           max-height :100%;
+       }
+
+       .close-button {
+           position:absolute ;
+           top :10px ;
+           right :10px ;
+           padding :10px ;
+           background-color:#fff ;
+           border:none ;
+           cursor:pointer ;
+       }
+
+       /* Стиль стрелок для навигации в модальном окне */
+       .arrow {
+          position:absolute ;
+          top :50% ;
+          transform :translateY(-50%);
+          font-size :30px ;
+          color:white ;
+          cursor:pointer ;
+      }
+
+      .left-arrow {
+          left :20px ;
+      }
+
+      .right-arrow {
+          right :20px ;
+      }
+
+      @media (max-width:600px) { /* Медиа-запрос для мобильных устройств */
+          .menu-title {
+              font-size :18px ; /* Уменьшение размера шрифта заголовка меню на мобильных устройствах */
+          }
+
+          .menu-items a {
+              margin :0 ; /* Убираем отступы между ссылками на мобильных устройствах */
+              padding :5px ; /* Добавляем немного внутреннего отступа для кликабельности */
+          }
+
+          .floor-plan {
+              height:auto ; /* Высота будет автоматически подстраиваться под экран устройства */
+          }
+
+          .point {
+              width :15px ; 
+              height :15px ; 
+          }
+      }
     </style>
 </head>
+<body>
 <div class="menu">
     <img src="сиб.png" alt="Логотип" class="logo">
     <span class="menu-title">Карта СибГИУ - 4 этаж</span>
@@ -124,90 +170,28 @@
     </div>
 
     <div class="modal"id="modal">
-        <img id="panoramaImage" src="" alt="Панорама">
-        <div class="arrow left-arrow" onclick="changePanorama(-1)">←</div>
-        <div class="arrow right-arrow" onclick="changePanorama(1)">→</div>
-        <button class="exit-button" onclick="closeModal()">Выход</button>
-    </div>
+         <img id ="panoramaImage" src="" alt ="Панорама">
+         <div class ="arrow left-arrow" onclick ="changePanorama(-1)">←</div> 
+         <div class ="arrow right-arrow" onclick ="changePanorama(1)">→</div> 
+         <button class ="exit-button" onclick ="closeModal()">Выход</button> 
+     </div>
 
-    <script>
-        const imagePaths = [
-            '4.1.jpg',
-            '4.2.jpg',
-            '4.3.jpg',
-            '4.4.jpg',
-            '4.5.jpg',
-            '4.6.jpg',
-            '4.7.jpg'
-        ];
+     <script> 
+         const imagePaths = [ '4.1.jpg', '4.2.jpg', '4.3.jpg', '4.4.jpg', '4.5.jpg', '4.6.jpg', '4.7.jpg' ]; 
 
-        let currentImageIndex = 0;
+         let currentImageIndex =0;
 
-        function openPanorama(index) {
-            currentImageIndex = index;
-            document.getElementById('panoramaImage').src = imagePaths[currentImageIndex];
-            document.getElementById('modal').style.display = 'flex';
-        }
+         function openPanorama(index) { currentImageIndex = index; document.getElementById('panoramaImage').src = imagePaths[currentImageIndex]; document.getElementById('modal').style.display ='flex'; } 
 
-        function closeModal() {
-            document.getElementById('modal').style.display = 'none';
-        }
+         function closeModal() { document.getElementById('modal').style.display ='none'; } 
 
-        function changePanorama(direction) {
-            currentImageIndex += direction;
+         function changePanorama(direction) { currentImageIndex += direction;
 
-            // Проверка границ массива
-            if (currentImageIndex < 0) {
-                currentImageIndex = imagePaths.length - 1; // Переход на последнее изображение
-            } else if (currentImageIndex >= imagePaths.length) {
-                currentImageIndex = 0; // Переход на первое изображение
-            }
+             // Проверка границ массива
+             if (currentImageIndex<0) { currentImageIndex = imagePaths.length -1; // Переход на последнее изображение } else if (currentImageIndex >= imagePaths.length) { currentImageIndex =0; // Переход на первое изображение } 
 
-            document.getElementById('panoramaImage').src = imagePaths[currentImageIndex];
-        }
+             document.getElementById('panoramaImage').src = imagePaths[currentImageIndex]; } 
+     </script>
 
-    </script>
-    <style>
-        body {
-        font-family: 'Inter', sans-serif;
-         margin: 0;
-      }
-
-     .modal {
-       display: none;
-       position: fixed;
-       top: 0;
-       left: 0;
-       width: 100%;
-       height: 100%;
-       background-color: rgba(0, 0, 0, 0.8);
-       justify-content: center;
-       align-items: center;
-      }  
-
-      .modal img {
-      max-width: 90%;
-       max-height: 90%;
-       }
-
-      .arrow {
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        font-size: 30px;
-        color: white;
-        cursor: pointer;
-       }
-
-     .left-arrow {
-      left: 20px;
-      }
-
-       .right-arrow {
-        right: 20px;
-        }
-
-    </style>
-
-</body>
+</body> 
 </html>
