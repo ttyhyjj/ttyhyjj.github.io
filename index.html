@@ -1,10 +1,3 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
     <title>Карта СибГИУ</title>
 </head>
@@ -21,35 +14,27 @@
             <a href="5floor.html">5 этаж</a>
         </div>
     </div>
-
     <div class="content">
         <div class="image-block"></div>
            <img src="сиб12.png" alt="Описание изображения" class="header-image">
            <div class="text-block">
              <h1>Главный корпус СибГИУ на интерактивной карте</h1>
              <p>Все важные места в главном корпусе для помощи первокурсникам и посетителям.</p>
-              <a href="1floor.html" target="_blank"><button class="view-button">Смотреть карту &rarr;</button></a>
+             <a href="1floor.html" target="_blank"><button class="view-button">Смотреть карту &rarr;</button></a>
             <div id="map" class="interactive-map"></div>
         </div>
+        
     </div>
-    
-
-    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-    <script>
-        // Функция для инициализации карты
-        function initMap() {
+            function initMap() {
             const map = L.map('map').setView([55.045, 82.934], 16); // Укажите координаты и уровень зума
-
             L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
                 maxZoom: 19,
                 attribution: '© OpenStreetMap'
             }).addTo(map);
-
             // Добавление маркеров
             const marker = L.marker([55.045, 82.934]).addTo(map); // Укажите координаты для маркера
             marker.bindPopup('<b>Здесь важное место!</b><br>Описание места.').openPopup();
         }
-
         // Функция для переключения видимости карты
         function toggleMap() {
             const mapContainer = document.getElementById('map');
@@ -60,7 +45,6 @@
                 mapContainer.style.display = 'none';
             }
         }
-
         // Изначально скрываем карту
         document.addEventListener('DOMContentLoaded', function() {
             document.getElementById('map').style.display = 'none';
