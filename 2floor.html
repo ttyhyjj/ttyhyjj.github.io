@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <title>Карта СибГИУ - 2 этаж</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0;
+            font-family: 'Inter', sans-serif;
+            background-color: #3568A6;
+        }
+        .menu {
+            width: 100%;
+            background-color: #043873;
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .logo {
+            height: 50px;
+            margin-right: 20px;
+        }
+        .menu-title {
+            font-size: 24px;
+            font-weight: 700;
+            margin-right: auto;
+        }
+        .menu-items a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: #fff;
+        }
+        .content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+        }
+        .floor-plan {
+            position: relative;
+            width: 900px; /* Ширина вашего плана */
+            height: 800px; /* Высота вашего плана */
+            background-image: url('2\ этаж.png'); /* Путь к вашему изображению плана */
+            background-size: cover;
+            margin-bottom: 0px; /* Отступ снизу для модального окна */
+        }
+        .point {
+            position: absolute;
+            width: 20px; /* Ширина точки */
+            height: 20px; /* Высота точки */
+            background-color: #043873; /* Цвет точки */
+            border-radius: 50%; /* Круглая форма */
+            cursor: pointer;
+        }
+        /* Пример расположения точек */
+        .point1 { top: 100px; right: 80px; }
+        .point2 { top: 350px; right: 63px; }
+        .point3 { top: 700px; right: 80px; }
+        .point4 { top: 715px; right: 430px; }
+        .point5 { top: 700px; left: 70px; }
+        .point6 { top: 415px; left: 56px; }
+        .point7 { top: 150px; left: 60px; }
+        /* Стили для модального окна */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content {
+            position: relative;
+            max-width: 100%;
+            max-height: 100%;
+        }
+        .modal img {
+            max-width: 100%;
+            max-height: 100%;
+        }
+        .close-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            padding: 10px;
+            background-color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<div class="menu">
+    <img src="img/сиб.png" alt="Логотип" class="logo">
+    <span class="menu-title">Карта СибГИУ - 2 этаж</span>
+    <div class="menu-items">
+        <a href="index.html">Главная</a>
+        <a href="1floor.html">1 этаж</a>
+        <a href="2floor.html">2 этаж</a>
+        <a href="3floor.html">3 этаж</a>
+        <a href="4floor.html">4 этаж</a>
+        <a href="5floor.html">5 этаж</a>
+    </div>
+</div>
+
+<div class="content">
+    <div class="floor-plan">
+        <div class="point point1" onclick="openPanorama(0)"></div>
+        <div class="point point2" onclick="openPanorama(1)"></div>
+        <div class="point point3" onclick="openPanorama(2)"></div>
+        <div class="point point4" onclick="openPanorama(3)"></div>
+        <div class="point point5" onclick="openPanorama(4)"></div>
+        <div class="point point6" onclick="openPanorama(5)"></div>
+        <div class="point point7" onclick="openPanorama(6)"></div>
+    </div>
+
+    <div class="modal"id="modal">
+        <img id="panoramaImage" src="" alt="Панорама">
+        <div class="arrow left-arrow" onclick="changePanorama(-1)">←</div>
+        <div class="arrow right-arrow" onclick="changePanorama(1)">→</div>
+        <button class="exit-button" onclick="closeModal()">Выход</button>
+    </div>
+
+    <script>
+        const imagePaths = [
+            '2.1.jpg',
+            '2.2.jpg',
+            '2.3.jpg',
+            '2.4.jpg',
+            '2.5.jpg',
+            '2.6.jpg',
+            '2.7.jpg'
+        ];
+
+        let currentImageIndex = 0;
+
+        function openPanorama(index) {
+            currentImageIndex = index;
+            document.getElementById('panoramaImage').src = imagePaths[currentImageIndex];
+            document.getElementById('modal').style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('modal').style.display = 'none';
+        }
+
+        function changePanorama(direction) {
+            currentImageIndex += direction;
+
+            // Проверка границ массива
+            if (currentImageIndex < 0) {
+                currentImageIndex = imagePaths.length - 1; // Переход на последнее изображение
+            } else if (currentImageIndex >= imagePaths.length) {
+                currentImageIndex = 0; // Переход на первое изображение
+            }
+
+            document.getElementById('panoramaImage').src = imagePaths[currentImageIndex];
+        }
+
+    </script>
+    <style>
+        body {
+        font-family: 'Inter', sans-serif;
+         margin: 0;
+      }
+
+     .modal {
+       display: none;
+       position: fixed;
+       top: 0;
+       left: 0;
+       width: 100%;
+       height: 100%;
+       background-color: rgba(0, 0, 0, 0.8);
+       justify-content: center;
+       align-items: center;
+      }  
+
+      .modal img {
+      max-width: 90%;
+       max-height: 90%;
+       }
+
+      .arrow {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 30px;
+        color: white;
+        cursor: pointer;
+       }
+
+     .left-arrow {
+      left: 20px;
+      }
+
+       .right-arrow {
+        right: 20px;
+        }
+
+    </style>
+
+</body>
+</html>
